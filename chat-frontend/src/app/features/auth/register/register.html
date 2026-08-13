@@ -1,0 +1,294 @@
+<div class="min-h-screen bg-slate-950 text-white">
+  <div class="grid min-h-screen lg:grid-cols-2">
+    <!-- Left Section -->
+    <section
+      class="relative hidden overflow-hidden bg-gradient-to-br from-indigo-600 via-violet-600 to-cyan-500 lg:flex"
+    >
+      <div
+        class="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
+      ></div>
+      <div
+        class="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"
+      ></div>
+      <div
+        class="relative z-10 flex w-full flex-col justify-between p-12 xl:p-16"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 backdrop-blur-md"
+          >
+            <i class="pi pi-comments text-xl"></i>
+          </div>
+          <span class="text-xl font-bold tracking-wide">
+            Realtime Chat
+          </span>
+        </div>
+        <!-- Content -->
+        <div class="max-w-xl">
+          <div class="mb-8 flex items-center gap-4">
+
+            <div
+              class="rounded-2xl bg-white/15 p-5 backdrop-blur-md"
+            >
+              <i class="pi pi-users text-3xl"></i>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/15 p-5 backdrop-blur-md"
+            >
+              <i class="pi pi-comments text-3xl"></i>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/15 p-5 backdrop-blur-md"
+            >
+              <i class="pi pi-bolt text-3xl"></i>
+            </div>
+
+          </div>
+
+          <h1
+            class="text-5xl font-bold leading-tight xl:text-6xl"
+          >
+            Join the
+            <br />
+
+            <span class="text-cyan-200">
+              conversation.
+            </span>
+          </h1>
+
+          <p
+            class="mt-6 max-w-lg text-lg leading-8 text-white/80"
+          >
+            Create your account and start connecting with
+            your team in real time.
+          </p>
+
+        </div>
+
+
+        <p class="text-sm text-white/60">
+          © 2026 Realtime Chat. Built for seamless communication.
+        </p>
+
+      </div>
+
+    </section>
+    <!-- Right Section -->
+    <section
+      class="flex items-center justify-center px-6 py-12 sm:px-10"
+    >
+      <div class="w-full max-w-md">
+        <!-- Mobile Logo -->
+        <div
+          class="mb-10 flex items-center gap-3 lg:hidden"
+        >
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-600"
+          >
+            <i class="pi pi-comments text-xl"></i>
+          </div>
+
+          <span class="text-xl font-bold">
+            Realtime Chat
+          </span>
+        </div>
+        <!-- Heading -->
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold tracking-tight">
+            Create your account
+          </h2>
+          <p class="mt-2 text-slate-400">
+            Join the conversation and start chatting.
+          </p>
+        </div>
+        <!-- Register Card -->
+        <div
+          class="rounded-3xl border border-slate-800 bg-slate-900/80 p-7 shadow-2xl backdrop-blur-xl sm:p-8"
+        >
+          <form
+            [formGroup]="registerForm"
+            (ngSubmit)="onRegister()"
+          >
+            <!-- Name -->
+            <div class="mb-5">
+              <label
+                for="name"
+                class="mb-2 block text-sm font-medium text-slate-200"
+              >
+                Full Name
+              </label>
+              <input
+                pInputText
+                id="name"
+                type="text"
+                formControlName="name"
+                placeholder="Enter your name"
+                class="w-full"
+              />
+              @if (
+                name.touched &&
+                name.hasError('required')
+              ) {
+                <small class="mt-1 block text-red-400">
+                  Name is required.
+                </small>
+              }
+
+              @if (
+                name.touched &&
+                name.hasError('minlength')
+              ) {
+                <small class="mt-1 block text-red-400">
+                  Name must contain at least 2 characters.
+                </small>
+              }
+
+            </div>
+            <!-- Email -->
+            <div class="mb-5">
+              <label
+                for="email"
+                class="mb-2 block text-sm font-medium text-slate-200"
+              >
+                Email
+              </label>
+
+              <input
+                pInputText
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="you@example.com"
+                class="w-full"
+              />
+
+              @if (
+                email.touched &&
+                email.hasError('required')
+              ) {
+                <small class="mt-1 block text-red-400">
+                  Email is required.
+                </small>
+              }
+
+              @if (
+                email.touched &&
+                email.hasError('email')
+              ) {
+                <small class="mt-1 block text-red-400">
+                  Please enter a valid email address.
+                </small>
+              }
+
+            </div>
+            <!-- Password -->
+            <div class="mb-5">
+              <label
+                for="password"
+                class="mb-2 block text-sm font-medium text-slate-200"
+              >
+                Password
+              </label>
+              <p-password
+                formControlName="password"
+                inputId="password"
+                placeholder="Create a password"
+                [feedback]="false"
+                [toggleMask]="true"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+              />
+
+              @if (
+                password.touched &&
+                password.hasError('required')
+              ) {
+                <small class="mt-1 block text-red-400">
+                  Password is required.
+                </small>
+              }
+
+              @if (
+                password.touched &&
+                password.hasError('minlength')
+              ) {
+                <small class="mt-1 block text-red-400">
+                  Password must contain at least 6 characters.
+                </small>
+              }
+
+            </div>
+            <!-- Confirm Password -->
+            <div class="mb-5">
+              <label
+                for="confirmPassword"
+                class="mb-2 block text-sm font-medium text-slate-200"
+              >
+                Confirm Password
+              </label>
+              <p-password
+                formControlName="confirmPassword"
+                inputId="confirmPassword"
+                placeholder="Confirm your password"
+                [feedback]="false"
+                [toggleMask]="true"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+              />
+
+              @if (
+                confirmPassword.touched &&
+                confirmPassword.hasError('required')
+              ) {
+                <small class="mt-1 block text-red-400">
+                  Please confirm your password.
+                </small>
+              }
+
+            </div>
+            <!-- Error -->
+            @if (registerError) {
+              <div
+                class="mb-5 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400"
+              >
+                <div class="flex items-center gap-2">
+
+                  <i class="pi pi-exclamation-circle"></i>
+
+                  <span>
+                    {{ registerError }}
+                  </span>
+
+                </div>
+
+              </div>
+            }
+            <!-- Register Button -->
+            <p-button
+              type="submit"
+              label="Create Account"
+              icon="pi pi-user-plus"
+              [fluid]="true"
+              [loading]="isLoading"
+            />
+            <!-- Login Link -->
+            <p
+              class="mt-7 text-center text-sm text-slate-400"
+            >
+              Already have an account?
+              <a
+                routerLink="/login"
+                class="ml-1 font-medium text-indigo-400 transition hover:text-indigo-300"
+              >
+                Sign in
+              </a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

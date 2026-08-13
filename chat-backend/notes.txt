@@ -1,0 +1,11 @@
+    "build": "bun build src/index.ts --outdir dist",
+    "serve": "bun dist/index.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:drop": "drizzle-kit drop",
+    "lint": "bunx eslint .",
+    "format": "bunx prettier --write .",
+    "test": "bun test",
+    "clean": "rm -rf dist"

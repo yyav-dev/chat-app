@@ -1,0 +1,363 @@
+<div class="min-h-screen bg-slate-950 text-white">
+
+  <div class="grid min-h-screen lg:grid-cols-2">
+
+    
+
+    <section
+      class="relative hidden overflow-hidden bg-gradient-to-br from-indigo-600 via-violet-600 to-cyan-500 lg:flex"
+    >
+
+      <!-- Background Effects -->
+
+      <div
+        class="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
+      ></div>
+
+      <div
+        class="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"
+      ></div>
+
+      <!-- Content -->
+
+      <div
+        class="relative z-10 flex w-full flex-col justify-between p-12 xl:p-16"
+      >
+
+        <!-- Logo -->
+
+        <div class="flex items-center gap-3">
+
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 backdrop-blur-md"
+          >
+            <i class="pi pi-comments text-xl"></i>
+          </div>
+
+          <span class="text-xl font-bold tracking-wide">
+            Realtime Chat
+          </span>
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="max-w-xl">
+
+          <!-- Icons -->
+
+          <div class="mb-8 flex items-center gap-4">
+
+            <div
+              class="rounded-2xl bg-white/15 p-5 backdrop-blur-md"
+            >
+              <i class="pi pi-comment text-3xl"></i>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/15 p-5 backdrop-blur-md"
+            >
+              <i class="pi pi-users text-3xl"></i>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/15 p-5 backdrop-blur-md"
+            >
+              <i class="pi pi-send text-3xl"></i>
+            </div>
+
+          </div>
+
+
+          <!-- Heading -->
+
+          <h1
+            class="text-5xl font-bold leading-tight xl:text-6xl"
+          >
+            Connect.
+            <br />
+
+            Chat.
+            <br />
+
+            <span class="text-cyan-200">
+              Collaborate.
+            </span>
+          </h1>
+
+
+          <!-- Description -->
+
+          <p
+            class="mt-6 max-w-lg text-lg leading-8 text-white/80"
+          >
+            Communicate instantly with your team through fast,
+            reliable and real-time conversations.
+          </p>
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <p class="text-sm text-white/60">
+          © 2026 Realtime Chat. Built for seamless communication.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <section
+      class="flex items-center justify-center px-6 py-12 sm:px-10"
+    >
+
+      <div class="w-full max-w-md">
+
+
+        <!-- Mobile Logo -->
+
+        <div
+          class="mb-10 flex items-center gap-3 lg:hidden"
+        >
+
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-600"
+          >
+            <i class="pi pi-comments text-xl"></i>
+          </div>
+
+          <span class="text-xl font-bold">
+            Realtime Chat
+          </span>
+
+        </div>
+
+
+        <!-- Heading -->
+
+        <div class="mb-8">
+
+          <h2
+            class="text-3xl font-bold tracking-tight"
+          >
+            Welcome back
+          </h2>
+
+          <p class="mt-2 text-slate-400">
+            Sign in to continue to your conversations.
+          </p>
+
+        </div>
+
+
+
+        <div
+          class="rounded-3xl border border-slate-800 bg-slate-900/80 p-7 shadow-2xl backdrop-blur-xl sm:p-8"
+        >
+
+          <form
+            [formGroup]="loginForm"
+            (ngSubmit)="onLogin()"
+          >
+
+
+
+            <div class="mb-6">
+
+              <label
+                for="email"
+                class="mb-2 block text-sm font-medium text-slate-200"
+              >
+                Email
+              </label>
+
+              <input
+                pInputText
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="you@example.com"
+                class="w-full"
+              />
+
+
+              <!-- Required -->
+
+              @if (
+                email.touched &&
+                email.hasError('required')
+              ) {
+
+                <small class="mt-1 block text-red-400">
+                  Email is required.
+                </small>
+
+              }
+
+
+              <!-- Invalid Email -->
+
+              @if (
+                email.touched &&
+                email.hasError('email')
+              ) {
+
+                <small class="mt-1 block text-red-400">
+                  Please enter a valid email address.
+                </small>
+
+              }
+
+            </div>
+
+
+
+            <div class="mb-5">
+
+              <label
+                for="password"
+                class="mb-2 block text-sm font-medium text-slate-200"
+              >
+                Password
+              </label>
+
+
+              <p-password
+                formControlName="password"
+                inputId="password"
+                placeholder="Enter your password"
+                [feedback]="false"
+                [toggleMask]="true"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+              />
+
+
+              <!-- Required -->
+
+              @if (
+                password.touched &&
+                password.hasError('required')
+              ) {
+
+                <small class="mt-1 block text-red-400">
+                  Password is required.
+                </small>
+
+              }
+
+
+              <!-- Minimum Length -->
+
+              @if (
+                password.touched &&
+                password.hasError('minlength')
+              ) {
+
+                <small class="mt-1 block text-red-400">
+                  Password must contain at least 6 characters.
+                </small>
+
+              }
+
+            </div>
+
+
+
+            <div
+              class="mb-7 flex items-center justify-between"
+            >
+
+              <div class="flex items-center gap-2">
+
+                <p-checkbox
+                  formControlName="rememberMe"
+                  [binary]="true"
+                  inputId="remember"
+                />
+
+                <label
+                  for="remember"
+                  class="cursor-pointer text-sm text-slate-400"
+                >
+                  Remember me
+                </label>
+
+              </div>
+
+
+              <!-- Forgot Password -->
+
+              <a
+                href="#"
+                class="text-sm text-indigo-400 transition hover:text-indigo-300"
+              >
+                Forgot password?
+              </a>
+
+            </div>
+
+
+
+            <p-button
+              type="submit"
+              label="Sign In"
+              icon="pi pi-sign-in"
+              [fluid]="true"
+              [loading]="isLoading"
+            />
+
+
+
+            <div
+              class="my-7 flex items-center gap-4"
+            >
+
+              <div
+                class="h-px flex-1 bg-slate-800"
+              ></div>
+
+              <span
+                class="text-xs uppercase tracking-wider text-slate-500"
+              >
+                Or
+              </span>
+
+              <div
+                class="h-px flex-1 bg-slate-800"
+              ></div>
+
+            </div>
+
+
+
+            <p
+              class="text-center text-sm text-slate-400"
+            >
+
+              Don't have an account?
+
+              <a
+                routerLink="/register"
+                class="ml-1 font-medium text-indigo-400 transition hover:text-indigo-300"
+              >
+                Create account
+              </a>
+
+            </p>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>
